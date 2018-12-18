@@ -46,9 +46,10 @@ function discountPlan(promotion, totalPrice, dicountItems) {
       break;
 
     case '指定菜品半价':
-      plan.items = promotion.items;
+      plan.items = [];
       plan.discount = 0;
       for (let i = 0; i < dicountItems.length; i++) {
+        plan.items[i] = dicountItems[i].name;
         plan.discount += dicountItems[i].price * dicountItems[i].count / 2;
       }
       break;
