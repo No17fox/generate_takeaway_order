@@ -11,7 +11,7 @@ describe('Select promotion', function () {
       amount: 32,
     }, {
       type: '指定菜品半价',
-      items: ['ITEM0001', 'ITEM0022'],
+      items: ['黄焖鸡', '凉皮'],
       discount: 13,
       amount: 25,
     }];
@@ -20,7 +20,7 @@ describe('Select promotion', function () {
 
     expect(result).toEqual({
       type: '指定菜品半价',
-      items: ['ITEM0001', 'ITEM0022'],
+      items: ['黄焖鸡', '凉皮'],
       discount: 13,
       amount: 25,
     });
@@ -33,7 +33,7 @@ describe('Select promotion', function () {
       amount: 26,
     }, {
       type: '指定菜品半价',
-      items: ['ITEM0022'],
+      items: ['凉皮'],
       discount: 4,
       amount: 28,
     }];
