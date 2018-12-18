@@ -7,7 +7,7 @@
    ```
    #1 getItemsInfor
    输入：
-   	itemsAndCount: [String]
+   	orderInfor: [String]
    	allItems: [Object]
    输出：
    	orderedItems:[Object]
