@@ -1,3 +1,7 @@
+'use strict';
+
+var bestCharge = require('../src/best_charge.js');
+
 describe('Take out food', function () {
 
   it('should generate best charge when best is 指定菜品半价', function() {
@@ -9,7 +13,7 @@ describe('Take out food', function () {
 肉夹馍 x 2 = 12元
 凉皮 x 1 = 8元
 -----------------------------------
-使用优惠:
+使用优惠：
 指定菜品半价(黄焖鸡，凉皮)，省13元
 -----------------------------------
 总计：25元
@@ -25,7 +29,7 @@ describe('Take out food', function () {
 肉夹馍 x 4 = 24元
 凉皮 x 1 = 8元
 -----------------------------------
-使用优惠:
+使用优惠：
 满30减6元，省6元
 -----------------------------------
 总计：26元
