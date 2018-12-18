@@ -20,7 +20,8 @@
    输入：
    	orderedItems:[Object]
    	promotions: [Object]
-   输出：promotionsAndCharge: [Object]
+   输出：
+   	promotionsAndCharge: [Object]
    ```
 
 3. 选择最划算的优惠方案
@@ -31,7 +32,6 @@
    	promotionsAndCharge: [Object]
    输出：
    	promotion: Object
-   	charge: Number
    ```
 
 4. 打印订单信息
@@ -41,7 +41,6 @@
    输入：
    	orderedItems:[Object]
    	promotion: Object
-   	charge: Number
    输出：
    	order: String
    ```
