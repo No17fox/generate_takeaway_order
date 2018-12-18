@@ -31,7 +31,7 @@
    输入：
    	promotionsAndCharge: [Object]
    输出：
-   	promotion: Object
+   	bestPromotion: Object
    ```
 
 4. 打印订单信息
@@ -40,7 +40,7 @@
    #4 printOrder
    输入：
    	orderedItems:[Object]
-   	promotion: Object
+   	bestPromotion: Object
    输出：
    	order: String
    ```
