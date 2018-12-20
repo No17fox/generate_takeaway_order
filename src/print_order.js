@@ -1,26 +1,24 @@
 'use strict';
 
-function printOrder(orderedItems, bestPromotion) {
+let printOrder = (orderedItems, bestPromotion) => {
   let order = '';
-  let header = '============= 订餐明细 =============\n';
-  let dividingLine = '-----------------------------------\n';
-  let footer = '===================================';
-  let items = orderedItems.map(printItem);
-  let charge = '总计：' + bestPromotion.amount + '元\n';
+  const HEADER = '============= 订餐明细 =============\n';
+  const DIVIDING_LINE = '-----------------------------------\n';
+  const FOOTER = '===================================';
+  const ITEMS = orderedItems.map(printItem).join('\n');
+  const CHARGE = '总计：' + bestPromotion.amount + '元\n';
   if (bestPromotion.discount === 0) {
-    order = header + items + '\n' + dividingLine + charge + footer;
+    order = HEADER + ITEMS + '\n' + DIVIDING_LINE + CHARGE + FOOTER;
   } else {
-    let promotion = printPromotion(bestPromotion);
-    order = header + items.join('\n') + '\n' + dividingLine + promotion + dividingLine + charge + footer; 
+    const PROMOTION = printPromotion(bestPromotion);
+    order = HEADER + ITEMS + '\n' + DIVIDING_LINE + PROMOTION + DIVIDING_LINE + CHARGE + FOOTER; 
   }
   return order;
-}
+};
 
-function printItem(orderedItem) {
-  return orderedItem.name + ' x ' + orderedItem.count + ' = ' + orderedItem.price * orderedItem.count + '元';
-}
+let printItem = orderedItem => orderedItem.name + ' x ' + orderedItem.count + ' = ' + orderedItem.price * orderedItem.count + '元';
 
-function printPromotion(bestPromotion) {
+let printPromotion = bestPromotion => {
   let promotion = '';
   switch (bestPromotion.type) {
     case '指定菜品半价':
@@ -35,6 +33,6 @@ function printPromotion(bestPromotion) {
       break;
   }
   return ('使用优惠：\n' + promotion);
-}
+};
 
 module.exports = printOrder;

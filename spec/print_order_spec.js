@@ -1,10 +1,10 @@
 'use strict';
 
-var printOrder = require('../src/print_order.js');
+let printOrder = require('../src/print_order.js');
 
-describe('Print order', function () {
+describe('Print order', () => {
   
-  it('should print the order', function () {
+  it('should print the order', () => {
     let orderedItems = [{
       id: 'ITEM0001',
       name: '黄焖鸡',
@@ -46,7 +46,7 @@ describe('Print order', function () {
     expect(result).toEqual(expected);
   });
 
-  it('should print the order', function () {
+  it('should print the order', () => {
     let orderedItems = [{
       id: 'ITEM0013',
       name: '肉夹馍',
@@ -75,7 +75,7 @@ describe('Print order', function () {
     expect(result).toEqual(expected);
   });
 
-  it('should print the order', function () {
+  it('should print the order', () => {
     let orderedItems = [{
       id: 'ITEM0013',
       name: '肉夹馍',

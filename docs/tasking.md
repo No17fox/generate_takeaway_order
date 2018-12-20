@@ -7,10 +7,10 @@
    ```
    #1 getItemsInfor
    输入：
-   	orderInfor: [String]
-   	allItems: [Object]
+   	selectedItems: [String]
+   	menu: [Object]
    输出：
-   	orderedItems:[Object]
+   	orderInfor:[Object]
    ```
 
 2. 根据用户点单分别计算两种不同优惠方案下的订单总价
@@ -18,7 +18,7 @@
    ```
    #2 calculateDiscount
    输入：
-   	orderedItems:[Object]
+   	orderInfor:[Object]
    	promotions: [Object]
    输出：
    	promotionsAndCharge: [Object]
@@ -39,7 +39,7 @@
    ```
    #4 printOrder
    输入：
-   	orderedItems:[Object]
+   	orderInfor:[Object]
    	bestPromotion: Object
    输出：
    	order: String

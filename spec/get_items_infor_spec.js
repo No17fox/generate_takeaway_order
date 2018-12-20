@@ -1,13 +1,15 @@
 'use strict';
 
-var getItemsInfor = require('../src/get_items_infor.js');
+let getItemsInfor = require('../src/get_items_infor.js');
+// import {getItemsInfor} from '../src/get_items_infor.js';
 
-describe('Get items infor', function () {
+describe('Get items infor', () => {
   
-  it('should get information of the ordered items', function () {
+  it('should get information of the ordered items', () => {
     let input = ["ITEM0001 x 1", "ITEM0013 x 2", "ITEM0022 x 1"];
 
     let result = getItemsInfor(input);
+    
     expect(result).toEqual([{
       id: 'ITEM0001',
       name: '黄焖鸡',

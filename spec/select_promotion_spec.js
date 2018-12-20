@@ -1,10 +1,10 @@
 'use strict';
 
-var selectPromotion = require('../src/select_promotion.js');
+let selectPromotion = require('../src/select_promotion.js');
 
-describe('Select promotion', function () {
+describe('Select promotion', () => {
   
-  it('should select 指定菜品半价', function () {
+  it('should select 指定菜品半价', () => {
     let input = [{
       type: '满30减6元',
       discount: 6,
@@ -26,7 +26,7 @@ describe('Select promotion', function () {
     });
   });
 
-  it('should select 满30减6元', function () {
+  it('should select 满30减6元', () => {
     let input = [{
       type: '满30减6元',
       discount: 6,
@@ -47,7 +47,7 @@ describe('Select promotion', function () {
     });
   });
 
-  it('should select 无可用优惠', function () {
+  it('should select 无可用优惠', () => {
     let input = [{
       type: '无可用优惠',
       discount: 0,

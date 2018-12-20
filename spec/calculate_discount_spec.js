@@ -1,10 +1,10 @@
 'use strict';
 
-var calculateDiscount = require("../src/calculate_discount.js");
+let calculateDiscount = require("../src/calculate_discount.js");
 
-describe('Calculate discount', function () {
+describe('Calculate discount', () => {
 
-  it('should calculate the amount of all promotions', function () {
+  it('should calculate the amount of all promotions', () => {
     let input = [{
       id: 'ITEM0001',
       name: '黄焖鸡',
@@ -21,7 +21,9 @@ describe('Calculate discount', function () {
       price: 8.00,
       count: 1,
     }];
+
     let result = calculateDiscount(input);
+
     expect(result).toEqual([{
       type: '满30减6元',
       discount: 6,
@@ -34,7 +36,7 @@ describe('Calculate discount', function () {
     }]);
   });
 
-  it('should calculate the amount of all promotions', function () {
+  it('should calculate the amount of all promotions', () => {
     let input = [{
       id: 'ITEM0013',
       name: '肉夹馍',
@@ -46,7 +48,9 @@ describe('Calculate discount', function () {
       price: 8.00,
       count: 1,
     }];
+
     let result = calculateDiscount(input);
+
     expect(result).toEqual([{
       type: '满30减6元',
       discount: 6,
@@ -59,14 +63,16 @@ describe('Calculate discount', function () {
     }]);
   });
 
-  it('should calculate the amount of all promotions', function () {
+  it('should calculate the amount of all promotions', () => {
     let input = [{
       id: 'ITEM0013',
       name: '肉夹馍',
       price: 6.00,
       count: 4,
     }];
+
     let result = calculateDiscount(input);
+    
     expect(result).toEqual([{
       type: '无可用优惠',
       discount: 0,

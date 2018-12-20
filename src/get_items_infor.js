@@ -1,25 +1,23 @@
 'use strict';
 
-var loadAllItems = require('./items.js');
-var allItems = loadAllItems();
+let loadAllItems = require('./items.js');
+const MENU = loadAllItems();
 
-function getItemsInfor(orderInfor) {
-  let orderedItems = [];
-  for (let item of orderInfor) { 
+let getItemsInfor = selectedItems => {
+  let orderInfor = [];
+  selectedItems.map((item) => {
     let itemAndCount = item.split(' x ');
     let itemInfor = matchItem(itemAndCount[0]);
     itemInfor.count = Number(itemAndCount[1]);
-    orderedItems.push(itemInfor);
-  }
-  return orderedItems;
-}
+    orderInfor.push(itemInfor);
+  })
+  return orderInfor;
+};
 
-function matchItem(itemId) {
-  for (let item of allItems) {
-    if (item.id === itemId) {
-      return item;
-    }
-  }
-}
+let matchItem = itemId => {
+  return MENU.find((element) => {
+    return element.id === itemId;
+  })
+};
 
 module.exports = getItemsInfor;

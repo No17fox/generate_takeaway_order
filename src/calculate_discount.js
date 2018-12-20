@@ -1,43 +1,36 @@
 'use strict';
 
-var loadPromotions = require('./promotions.js');
-var promotions = loadPromotions();
+let loadPromotions = require('./promotions.js');
+const PROMOTIONS = loadPromotions();
 
-function calculateDiscount(orderedItems) {
+let calculateDiscount = orderInfor => {
   let promotionsAndCharge = [];
   let plan = {};
-  let totalPrice = sum(orderedItems);
-  let dicountItems = orderedItems.filter(isDiscountItem);
+  let totalPrice = sum(orderInfor);
+  let dicountItems = orderInfor.filter(isDiscountItem);
   if (totalPrice < 30 && dicountItems.length === 0) {
-    plan = discountPlan({type: '无可用优惠'}, totalPrice, dicountItems);
+    plan = discountPlan(totalPrice, dicountItems);
     promotionsAndCharge.push(plan);
   } else {
-    for (let i = 0; i < promotions.length; i++) {
-      plan = discountPlan(promotions[i], totalPrice, dicountItems);
+    for (let promotion of PROMOTIONS) {
+      plan = discountPlan(totalPrice, dicountItems, promotion);
       promotionsAndCharge.push(plan);
     }
   }
   return promotionsAndCharge;
-}
+};
 
-function sum(orderedItems) {
-  let totalPrice = 0;
-  for (let i = 0; i < orderedItems.length; i++) {
-    totalPrice += orderedItems[i].price * orderedItems[i].count;
-  }
-  return totalPrice;
-}
+let sum = orderInfor => {
+  return orderInfor.reduce((totalPrice, item) => {
+    return totalPrice + item.price * item.count;
+  }, 0);
+};
 
-function isDiscountItem(orderedItem) {
-  for (let i = 0; i < promotions[1].items.length; i++) {
-    if (orderedItem.id === promotions[1].items[i]) {
-      return true;
-    }
-  }
-  return false;
-}
+let isDiscountItem = orderedItem => {
+  return PROMOTIONS[1].items.includes(orderedItem.id);
+};
 
-function discountPlan(promotion, totalPrice, dicountItems) {
+let discountPlan = (totalPrice, dicountItems, promotion = {type: '无可用优惠'}) => {
   let plan = {};
   plan.type = promotion.type;
   switch (plan.type) {
@@ -48,9 +41,9 @@ function discountPlan(promotion, totalPrice, dicountItems) {
     case '指定菜品半价':
       plan.items = [];
       plan.discount = 0;
-      for (let i = 0; i < dicountItems.length; i++) {
-        plan.items[i] = dicountItems[i].name;
-        plan.discount += dicountItems[i].price * dicountItems[i].count / 2;
+      for (let item of dicountItems) {
+        plan.items.push(item.name);
+        plan.discount += item.price * item.count / 2;
       }
       break;
 
@@ -63,6 +56,6 @@ function discountPlan(promotion, totalPrice, dicountItems) {
   }
   plan.amount = totalPrice - plan.discount;
   return plan;
-}
+};
 
 module.exports = calculateDiscount;
